@@ -1074,7 +1074,7 @@ def _resolveCtypesImports(cbinaries):
         if os.name == "nt" and ext.lower() in [".so", ".dylib"]:
             continue
         cpath = find_library(os.path.splitext(cbin)[0])
-        if sys.platform == "linux2":
+        if sys.platform.startswith('linux'):
             # CAVEAT: find_library() is not the correct function. Ctype's
             # documentation says that it is meant to resolve only the filename
             # (as a *compiler* does) not the full path. Anyway, it works well

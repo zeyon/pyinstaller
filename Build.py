@@ -969,7 +969,8 @@ class EXE(Target):
             PLATFORM = syst_real + "-" + architecture()
         except ImportError:
             import os
-            n = { "nt": "Windows", "linux2": "Linux", "darwin": "Darwin" }
+            n = { "nt": "Windows", "linux2": "Linux", 'linux3': 'Linux',
+                "darwin": "Darwin" }
             PLATFORM = n[os.name] + "-32bit"
 
         if not self.console:

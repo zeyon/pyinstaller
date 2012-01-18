@@ -12,9 +12,9 @@ import sys
 if os.name == 'nt':
     hiddenimports = ['OpenGL.platform.win32']
 else:
-    if sys.platform == 'linux2':
+    if sys.platform.startswith('linux'):
         hiddenimports = ['OpenGL.platform.glx']
-    elif sys.platform[:6] == 'darwin':
+    elif sys.platform.startswith('darwin'):
         hiddenimports = ['OpenGL.platform.darwin']
     else:
         print 'ERROR: hook-OpenGL: Unrecognised combo (os.name: %s, sys.platform: %s)' % (os.name, sys.platform)

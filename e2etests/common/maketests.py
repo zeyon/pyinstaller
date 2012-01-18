@@ -21,6 +21,7 @@ import os
 import sys
 import subprocess
 
+
 def exec_python_rc(*args, **kwargs):
     cmdargs = [sys.executable]
     if is_darwin:
@@ -35,7 +36,7 @@ makespec = os.path.join(utils_dir, 'Makespec.py')
 build = os.path.join(utils_dir, 'Build.py')
 
 is_win = sys.platform.startswith('win')
-is_linux = sys.platform == 'linux2'
+is_linux = sys.platform.startswith('linux')
 is_darwin = sys.platform == 'darwin'
 
 if is_win:
