@@ -16,6 +16,11 @@
 # Temporary vim files
 *.swp
 
+# Old test file structure
+/buildtests/ctypes/testctypes.dylib
+/support/useTK.py
+/support/useUnicode.py
+
 # /buildtests/
 /buildtests/build*
 /buildtests/dist*
