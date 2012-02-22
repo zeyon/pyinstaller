@@ -59,7 +59,12 @@ def system(cmd):
     # command path)
     if iswin:
         cmd = 'echo on && ' + cmd
+    # On Mac run binary as 32bit application (only 32bit supported)
+    elif sys.platform.startswith('darwin'):
+        cmd = 'VERSIONER_PYTHON_PREFER_32_BIT=yes arch -i386 ' + cmd
+
     os.system(cmd)
+
 
 def _save_data(filename, data):
     outf = open(filename, 'w')

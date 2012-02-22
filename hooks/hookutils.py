@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 
 import os
+import sys
+import tempfile
+
 
 def exec_statement(stat):
     """Executes a Python statement in an externally spawned interpreter, and
     returns anything that was emitted in the standard output as a single string.
     """
-
-    import os, tempfile, sys
 
     fnm = tempfile.mktemp()
     exe = sys.executable
@@ -15,6 +16,9 @@ def exec_statement(stat):
     # Using "echo on" as a workaround for a bug in NT4 shell
     if os.name == "nt":
         cmd = 'echo on && "%s" -c "%s" > "%s"' % (exe, stat, fnm)
+    # On Mac run binary as 32bit application (only 32bit supported)
+    elif sys.platform.startswith('darwin'):
+        cmd = 'VERSIONER_PYTHON_PREFER_32_BIT=yes arch -i386 "%s" -c "%s" > "%s"' % (exe, stat, fnm)
     else:
         cmd = '"%s" -c "%s" > "%s"' % (exe, stat, fnm)
 

@@ -24,7 +24,8 @@ else:
 
 os.chdir(CTYPES_DIR)
 if sys.platform[:6] == "darwin":
-    os.system("gcc -Wall -dynamiclib testctypes.c -o testctypes.dylib -headerpad_max_install_names")
+    # 'gcc -arch i386' - create only 32bit dylib.
+    os.system("gcc -arch i386 -Wall -dynamiclib testctypes.c -o testctypes.dylib -headerpad_max_install_names")
     id_dylib = os.path.abspath("testctypes.dylib")
     os.system("install_name_tool -id %s testctypes.dylib" % (id_dylib,))
 elif sys.platform == "linux2":

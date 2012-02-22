@@ -56,9 +56,10 @@ PYTHON = sys.executable
 
 # On Mac OS X we support only 32bit
 # python interpreter can be run as 32bit or 64bit
-# run as 32bit
+# run as 32bit.
+# On Mac run binary as 32bit application (only 32bit supported)
 if sys.platform.startswith('darwin'):
-    PYTHON = 'arch -i386 ' + PYTHON
+    PYTHON = 'VERSIONER_PYTHON_PREFER_32_BIT=yes arch -i386 ' + PYTHON
 
 if sys.platform[:3] == 'win':
     if string.find(PYTHON, ' ') > -1:
