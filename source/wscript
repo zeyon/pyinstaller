@@ -159,6 +159,15 @@ def configure(conf):
 
     ### Defines, Includes, Platform specific CFLAGS
 
+    if myplatform.startswith('darwin'):
+        # Ensure only 32bit loader is compiled.
+        conf.env.append_value('CCFLAGS', '-arch')
+        conf.env.append_value('CCFLAGS', 'i386')
+        conf.env.append_value('CXXFLAGS', '-arch')
+        conf.env.append_value('CXXFLAGS', 'i386')
+        conf.env.append_value('LINKFLAGS', '-arch')
+        conf.env.append_value('LINKFLAGS', 'i386')
+
     if myplatform.startswith('lin'):
         # make sure we don't use declarations after statement (break Visual Studio)
         conf.env.append_value('CCFLAGS', '-Wdeclaration-after-statement')
