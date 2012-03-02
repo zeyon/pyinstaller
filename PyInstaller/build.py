@@ -1534,13 +1534,13 @@ def MERGE(*args):
     # list will include all dependencies.
     id_to_path = {}
     for _, i, p in args:
-        id_to_path[i] = p
+        id_to_path[os.path.normcase(i)] = p
     dependencies = {}
     for analysis, _, _ in args:
         path = os.path.abspath(analysis.scripts[-1][1]).replace(common_prefix, "", 1)
         path = os.path.splitext(path)[0]
-        if path in id_to_path:
-            path = id_to_path[path]
+        if os.path.normcase(path) in id_to_path:
+            path = id_to_path[os.path.normcase(path)]
         set_dependencies(analysis, dependencies, path)
 
 
