@@ -20,6 +20,7 @@ def hook(mod):
     mod.pyinstaller_binaries.extend(qt5_plugins_binaries('imageformats'))
     mod.pyinstaller_binaries.extend(qt5_plugins_binaries('inputmethods'))
     mod.pyinstaller_binaries.extend(qt5_plugins_binaries('graphicssystems'))
+    mod.pyinstaller_binaries.extend(qt5_plugins_binaries('mediaservice'))
     mod.pyinstaller_binaries.extend(qt5_plugins_binaries('platforms'))
     mod.pyinstaller_binaries.extend(qt5_plugins_binaries('printsupport'))
     return mod
