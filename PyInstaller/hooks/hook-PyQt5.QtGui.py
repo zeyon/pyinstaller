@@ -19,5 +19,7 @@ def hook(mod):
     mod.add_binary(qt5_plugins_binaries('imageformats'))
     mod.add_binary(qt5_plugins_binaries('inputmethods'))
     mod.add_binary(qt5_plugins_binaries('graphicssystems'))
+    mod.add_binary(qt5_plugins_binaries('mediaservice'))
     mod.add_binary(qt5_plugins_binaries('platforms'))
+    mod.add_binary(qt5_plugins_binaries('printsupport'))
     return mod
