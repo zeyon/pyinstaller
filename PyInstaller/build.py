@@ -1473,7 +1473,7 @@ class EXE(Target):
             # refuses to run the exe at all. Since the .exe does not in
             # fact depend on those, and the actual manifest will be used
             # later when an activation context is created, all
-            # dependencies are removed from the embedded manifest. 
+            # dependencies are removed from the embedded manifest.
             self.manifest.dependentAssemblies = []
             self.manifest.update_resources(tmpnm, [1]) # 1 for executable
             trash.append(tmpnm)
@@ -1487,6 +1487,7 @@ class EXE(Target):
             if self.icon:
                 icon.CopyIcons(tmpnm, self.icon)
             if self.versrsrc:
+                from PyInstaller.utils.win32 import versioninfo
                 versioninfo.SetVersion(tmpnm, self.versrsrc)
             for res in self.resources:
                 res = res.split(",")
