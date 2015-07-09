@@ -158,7 +158,7 @@ class VSVersionInfo:
         return i
 
     def toRaw(self):
-        nm = pywintypes.Unicode(u'VS_VERSION_INFO')
+        nm = 'VS_VERSION_INFO'
         rawffi = self.ffi.toRaw()
         vallen = len(rawffi)
         typ = 0
@@ -337,8 +337,6 @@ class StringFileInfo(object):
         return i
 
     def toRaw(self):
-        if type(self.name) is STRINGTYPE:
-            self.name = pywintypes.Unicode(self.name)
         vallen = 0
         typ = 1
         sublen = 6 + 2*len(self.name) + 2
@@ -385,8 +383,6 @@ class StringTable:
         return i
 
     def toRaw(self):
-        if type(self.name) is STRINGTYPE:
-            self.name = pywintypes.Unicode(self.name)
         vallen = 0
         typ = 1
         sublen = 6 + 2*len(self.name) + 2
@@ -452,7 +448,7 @@ class StringStruct:
         return abcd
 
     def __unicode__(self, indent=''):
-        return u"StringStruct(u'%s', u'%s')" % (self.name, self.val) 
+        return u"StringStruct(u'%s', u'%s')" % (self.name, self.val)
 
 
 def parseCodePage(data, i, limit):
@@ -488,7 +484,7 @@ class VarFileInfo:
     def toRaw(self):
         self.vallen = 0
         self.wType = 1
-        self.name = pywintypes.Unicode('VarFileInfo')
+        self.name = 'VarFileInfo'
         sublen = 6 + 2*len(self.name) + 2
         pad = ''
         if sublen % 4:
@@ -532,7 +528,7 @@ class VarStruct:
         self.wValueLength = len(self.kids) * 2
         self.wType = 0
         if type(self.name) is STRINGTYPE:
-            self.name = pywintypes.Unicode(self.name)
+            self.name = self.name
         sublen = 6 + 2*len(self.name) + 2
         pad = ''
         if sublen % 4:
